@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Kaskadyor — Moto Ekipirovka va Ehtiyot Qismlar</title>
+    <meta
+      name="description"
+      content="Kaskadyor — mototsiklchilar uchun sifatli motoshlemlar, ekipirovkalar, aksessuarlar va ehtiyot qismlar. Toshkent va O‘zbekiston bo‘ylab yetkazib berish."
+    />
+    <meta name="theme-color" content="#08090C" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://kaskadyor.uz/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="uz_UZ" />
+    <meta property="og:site_name" content="Kaskadyor" />
+    <meta property="og:url" content="https://kaskadyor.uz/" />
+    <meta property="og:title" content="Kaskadyor — Moto Ekipirovka va Ehtiyot Qismlar" />
+    <meta
+      property="og:description"
+      content="Kaskadyor — mototsiklchilar uchun sifatli motoshlemlar, ekipirovkalar, aksessuarlar va ehtiyot qismlar. Toshkent va O‘zbekiston bo‘ylab yetkazib berish."
+    />
+    <meta property="og:image" content="https://kaskadyor.uz/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Qorong‘i garajda turgan qora-qizil sport mototsikl" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/kaskadyor/hero/hero-background.webp"
+      media="(min-aspect-ratio: 1/1)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/kaskadyor/hero/hero-background-mobile.webp"
+      media="(max-aspect-ratio: 1/1)"
+      fetchpriority="high"
+    />
+    <!--bike-preload-->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/kaskadyor/hero/hero-motorcycle.webp"
+      imagesrcset="/assets/kaskadyor/responsive/hero-motorcycle-960w.webp 960w, /assets/kaskadyor/responsive/hero-motorcycle-1400w.webp 1400w, /assets/kaskadyor/hero/hero-motorcycle.webp 2000w"
+      imagesizes="(min-width: 1024px) 74vw, 132vw"
+      fetchpriority="high"
+    />
+    <!--/bike-preload-->
+
+    <script>
+      try {
+        if (document.documentElement.hasAttribute('data-intro')) {
+          if (sessionStorage.getItem('ky-intro')) document.documentElement.classList.add('intro-seen')
+          sessionStorage.setItem('ky-intro', '1')
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

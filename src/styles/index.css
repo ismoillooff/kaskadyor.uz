@@ -1,0 +1,1581 @@
+@import 'tailwindcss';
+
+/* ───────────────────────── Tokens ───────────────────────── */
+
+@theme {
+  --color-obsidian: #08090c;
+  --color-surface: #181a20;
+  --color-redline: #ed1c24;
+  --color-bone: #f5f5f5;
+  --color-silver: #969aa3;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  color-scheme: dark;
+  --red-glow: rgba(237, 28, 36, 0.16);
+  --red-hot: #ff2b33;
+  --hair: rgba(150, 154, 163, 0.2);
+  --hair-strong: rgba(245, 245, 245, 0.3);
+  --text-soft: rgba(245, 245, 245, 0.76);
+
+  --pad: clamp(20px, 4.2vw, 64px);
+  --h1: clamp(3.25rem, 15vw, 6rem);
+  --nav-h: 64px;
+  --strip-h: 64px;
+
+  /* Intro choreography: repeat visits in a session skip the curtain and arrive sooner */
+  --intro-shift: 0ms;
+}
+
+.intro-seen {
+  --intro-shift: 780ms;
+}
+
+/* ───────────────────────── Base & browser surfaces ───────────────────────── */
+
+html {
+  background: var(--color-obsidian);
+  scrollbar-color: #2b2e36 var(--color-obsidian);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--color-obsidian);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-redline);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-bone);
+  outline-offset: 3px;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+a {
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ───────────────────────── Hero frame ───────────────────────── */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /* The bike cutout carries transparent padding; never let it extend the document */
+  overflow: clip;
+}
+
+/* Background stack */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-bg-env,
+.hero-bg-env img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg-env img {
+  object-fit: cover;
+  object-position: 62% 58%;
+  animation: ky-env 1500ms var(--ease-expo) both;
+  animation-delay: calc(620ms - var(--intro-shift));
+}
+
+.hero-bg-carbon {
+  position: absolute;
+  inset: 0;
+  background: url('/assets/kaskadyor/effects/carbon-texture.webp') repeat;
+  background-size: 384px;
+  /* The weave itself is very low-contrast (luma 15–22): at half strength it reads as material on the black wall */
+  opacity: 0.5;
+  mask-image: radial-gradient(56% 64% at 16% 26%, #000 0%, transparent 100%);
+}
+
+.hero-bg-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg-lines path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: ky-draw 1300ms var(--ease-expo) both;
+}
+
+.lines-speed path {
+  animation-delay: calc(1300ms - var(--intro-shift));
+}
+.lines-red path {
+  animation-delay: calc(1520ms - var(--intro-shift));
+}
+.lines-tech path {
+  animation-delay: calc(1680ms - var(--intro-shift));
+}
+
+.hero-bg-glow {
+  position: absolute;
+  right: -10vw;
+  bottom: -14vw;
+  width: 70vw;
+  height: 62vw;
+  background: radial-gradient(closest-side, var(--red-glow), rgba(237, 28, 36, 0.05) 55%, transparent 100%);
+  animation: ky-fade 1600ms var(--ease-expo) both;
+  animation-delay: calc(760ms - var(--intro-shift));
+}
+
+.hero-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8, 9, 12, 0.88) 0%, rgba(8, 9, 12, 0.6) 26%, rgba(8, 9, 12, 0) 52%),
+    linear-gradient(0deg, rgba(8, 9, 12, 0.92) 0%, rgba(8, 9, 12, 0) 16%),
+    linear-gradient(180deg, rgba(8, 9, 12, 0.75) 0%, rgba(8, 9, 12, 0) 14%);
+}
+
+/* Six-column hairline grid: the layout's own columns, barely there */
+.hero-bg-guides {
+  position: absolute;
+  inset: 0 var(--pad);
+  background-image: linear-gradient(to right, rgba(150, 154, 163, 0.055) 1px, transparent 1px);
+  background-size: calc(100% / 6) 100%;
+  border-right: 1px solid rgba(150, 154, 163, 0.055);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 64%, transparent 92%);
+}
+
+/* ───────────────────────── Intro curtain ───────────────────────── */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--color-obsidian);
+  pointer-events: none;
+  animation: ky-curtain 640ms var(--ease-expo) 860ms both;
+}
+
+.intro-inner {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  animation: ky-push 900ms var(--ease-expo) 820ms both;
+}
+
+.intro-mark {
+  font: italic 800 clamp(2.4rem, 7vw, 4.75rem) / 1 var(--font-display);
+  letter-spacing: 0.08em;
+  padding-left: 0.08em;
+  color: var(--color-bone);
+  animation: ky-mark 900ms var(--ease-expo) both;
+}
+
+.intro-line {
+  display: block;
+  width: min(62vw, 420px);
+  height: 2px;
+  background: var(--color-redline);
+  transform-origin: 50% 50%;
+  animation: ky-scale-x 760ms var(--ease-expo) 200ms both;
+}
+
+.intro-seen .intro {
+  display: none;
+}
+
+/* ───────────────────────── Shared entrance ───────────────────────── */
+
+.reveal {
+  animation: ky-rise 1000ms var(--ease-expo) both;
+  animation-delay: calc(var(--d, 0ms) - var(--intro-shift));
+}
+
+/* ───────────────────────── Header ───────────────────────── */
+
+.site-header {
+  position: relative;
+  z-index: 20;
+  height: var(--nav-h);
+  padding: 0 var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.wordmark {
+  position: relative;
+  display: inline-flex;
+  padding: 8px 0;
+  font: italic 800 26px / 1 var(--font-display);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--color-bone);
+}
+
+.wordmark::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0.05em;
+  bottom: 2px;
+  height: 2px;
+  background: var(--color-bone);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 600ms var(--ease-expo);
+}
+
+.wordmark:hover::after,
+.wordmark:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav-desktop {
+  display: none;
+}
+
+.nav-desktop ul {
+  display: flex;
+  gap: clamp(24px, 3vw, 48px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: 600 15px / 1 var(--font-display);
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: var(--color-silver);
+  transition: color 300ms ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0.16em;
+  bottom: 10px;
+  height: 1px;
+  background: var(--color-bone);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms var(--ease-expo);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link[aria-pressed='true'] {
+  color: var(--color-bone);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[aria-pressed='true']::after {
+  transform: scaleX(1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-katalog {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px 0 16px;
+  border: 1px solid var(--hair-strong);
+  font: 700 15px / 1 var(--font-display);
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  color: var(--color-bone);
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease;
+}
+
+.btn-katalog svg {
+  transition: transform 400ms var(--ease-expo);
+}
+
+.btn-katalog:hover,
+.btn-katalog:focus-visible {
+  background: rgba(237, 28, 36, 0.14);
+  border-color: var(--color-redline);
+}
+
+.btn-katalog:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.menu-toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  color: var(--color-bone);
+}
+
+.menu-toggle:hover {
+  border-color: var(--hair);
+}
+
+/* ───────────────────────── Mobile menu ───────────────────────── */
+
+.mobile-menu-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(8, 9, 12, 0.6);
+}
+
+.mobile-menu {
+  position: absolute;
+  inset: 0 0 auto;
+  max-height: 100svh;
+  overflow-y: auto;
+  padding: 0 var(--pad) 28px;
+  background: var(--color-obsidian);
+  border-bottom: 1px solid var(--hair);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+}
+
+.mobile-menu-top {
+  position: relative;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu-list {
+  position: relative;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: menu;
+}
+
+.mobile-menu-list li {
+  border-top: 1px solid var(--hair);
+}
+
+.mobile-menu-link {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  font: 800 clamp(30px, 9vw, 44px) / 1 var(--font-display);
+  letter-spacing: 0.01em;
+  color: var(--color-bone);
+}
+
+.mobile-menu-link svg {
+  color: var(--color-silver);
+}
+
+.mobile-menu-foot {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hair);
+}
+
+.mobile-menu-foot p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-silver);
+}
+
+/* ───────────────────────── Headline block ───────────────────────── */
+
+.hero-main {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 10px var(--pad) 0;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+/* The client's setup line, set as the first beat of the headline rather than a label */
+.lead-in {
+  margin: 0 0 0.3em;
+  font: 700 calc(var(--h1) * 0.36) / 1 var(--font-display);
+  letter-spacing: 0.01em;
+  color: var(--color-silver);
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--h1);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--color-bone);
+  text-wrap: balance;
+}
+
+.headline-line {
+  display: block;
+}
+
+.headline-line--accent {
+  color: var(--color-redline);
+}
+
+.headline-mask {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.04em;
+  margin-block: -0.04em;
+}
+
+.headline-text {
+  display: block;
+  animation: ky-line-up 1100ms var(--ease-expo) both;
+  animation-delay: calc(var(--d, 0ms) - var(--intro-shift));
+}
+
+.hero-description {
+  max-width: 40ch;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--text-soft);
+}
+
+/* ───────────────────────── Buttons ───────────────────────── */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 56px;
+  padding: 0 22px 0 26px;
+  /* 19px bold condensed = WCAG "large text"; white on #ED1C24 clears 3:1 */
+  font: 700 19px / 1 var(--font-display);
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease,
+    transform 400ms var(--ease-expo);
+}
+
+.btn-arrow {
+  flex: none;
+  transition: transform 500ms var(--ease-expo);
+}
+
+.btn:hover .btn-arrow,
+.btn:focus-visible .btn-arrow {
+  transform: translateX(5px);
+}
+
+.btn:hover .btn-arrow--diag,
+.btn:focus-visible .btn-arrow--diag {
+  transform: translate(3px, -3px);
+}
+
+.btn-primary {
+  background: var(--color-redline);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--red-hot);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  border: 1px solid var(--hair-strong);
+  color: var(--color-bone);
+  background: rgba(8, 9, 12, 0.35);
+}
+
+.btn-ghost:hover {
+  border-color: rgba(245, 245, 245, 0.7);
+  background: rgba(245, 245, 245, 0.06);
+  transform: translateY(-2px);
+}
+
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
+/* ───────────────────────── Stage (motorcycle + equipment) ───────────────────────── */
+
+.stage {
+  /* Box = the bike's visible silhouette (1430×1034 inside the 2000×1500 cutout) */
+  position: relative;
+  z-index: 1;
+  margin-top: 22px;
+  width: min(100%, 640px);
+  aspect-ratio: 1430 / 1034;
+  margin-inline: auto;
+  pointer-events: none;
+}
+
+.stage-floor {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  bottom: -6%;
+  height: 18%;
+  background:
+    radial-gradient(48% 40% at 50% 48%, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%),
+    radial-gradient(30% 40% at 82% 50%, rgba(237, 28, 36, 0.14) 0%, transparent 100%);
+  animation: ky-fade 1200ms var(--ease-expo) both;
+  animation-delay: calc(900ms - var(--intro-shift));
+}
+
+.stage-parallax,
+.stage-focus,
+.stage-bike {
+  position: absolute;
+  inset: 0;
+}
+
+.stage-bike {
+  animation: ky-bike 1200ms var(--ease-expo) both;
+  animation-delay: calc(820ms - var(--intro-shift));
+}
+
+.stage-bike img,
+.stage-sweep {
+  position: absolute;
+  left: -19.93%;
+  top: -22.53%;
+  width: 139.86%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  user-select: none;
+}
+
+/* One specular pass across the bodywork, confined to the bike's own alpha */
+.stage-sweep {
+  display: none;
+  background: linear-gradient(100deg, transparent 38%, rgba(255, 255, 255, 0.5) 50%, transparent 62%) no-repeat;
+  background-size: 260% 100%;
+  background-position: 130% 0;
+  mask: url('/assets/kaskadyor/responsive/hero-motorcycle-960w.webp') center / 100% 100% no-repeat;
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  animation: ky-sweep 1700ms cubic-bezier(0.45, 0, 0.2, 1) both;
+  animation-delay: calc(1650ms - var(--intro-shift));
+}
+
+.stage-product {
+  position: absolute;
+  z-index: 2;
+  inset-inline: 0;
+  margin: 0 auto;
+}
+
+.stage-product--square {
+  bottom: 5%;
+  width: 72%;
+  aspect-ratio: 1;
+}
+
+.stage-product--tall {
+  bottom: -2%;
+  height: 100%;
+  aspect-ratio: 1000 / 1400;
+}
+
+.stage-product img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 26px 30px rgba(0, 0, 0, 0.7));
+}
+
+.stage-product-light {
+  position: absolute;
+  inset: -18% -30% -6%;
+  background:
+    radial-gradient(50% 46% at 50% 46%, rgba(245, 245, 245, 0.1) 0%, transparent 100%),
+    radial-gradient(42% 14% at 50% 96%, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+}
+
+/* ───────────────────────── Gear plate ───────────────────────── */
+
+.gear-plate {
+  position: relative;
+  z-index: 3;
+  margin-top: 36px;
+  padding: 16px 18px 0;
+  background: rgba(24, 26, 32, 0.82);
+  border: 1px solid var(--hair);
+  pointer-events: auto;
+}
+
+.gear-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.gear-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gear-readout-label {
+  font: 600 11px / 1 var(--font-display);
+  letter-spacing: 0.22em;
+  color: var(--color-silver);
+}
+
+.gear-readout-window {
+  position: relative;
+  display: block;
+  height: 68px;
+  overflow: hidden;
+}
+
+.gear-readout-digit {
+  display: block;
+  font: 800 76px / 68px var(--font-display);
+  color: var(--color-bone);
+  transition: color 400ms ease;
+}
+
+.gear-readout.is-engaged .gear-readout-digit {
+  color: var(--color-redline);
+}
+
+.gear-captions {
+  display: grid;
+}
+
+.gear-caption {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(8px);
+  visibility: hidden;
+  transition:
+    opacity 350ms ease,
+    transform 600ms var(--ease-expo),
+    visibility 0s linear 350ms;
+}
+
+.gear-caption.is-active {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition:
+    opacity 450ms ease 120ms,
+    transform 700ms var(--ease-expo) 120ms,
+    visibility 0s;
+}
+
+.gear-caption-title {
+  margin: 0;
+  font: 700 26px / 1 var(--font-display);
+  letter-spacing: 0.02em;
+  color: var(--color-bone);
+}
+
+.gear-caption-text {
+  margin: 7px 0 9px;
+  max-width: 36ch;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.gear-caption-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  font: 700 14px / 1 var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 245, 245, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  color: var(--color-bone);
+  transition:
+    color 300ms ease,
+    text-decoration-color 300ms ease;
+}
+
+.gear-caption-cta svg {
+  transition: transform 400ms var(--ease-expo);
+}
+
+.gear-caption-cta:hover {
+  text-decoration-color: var(--color-bone);
+}
+
+.gear-caption-cta:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.gear-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 14px -18px 0;
+  border-top: 1px solid var(--hair);
+}
+
+.gear-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 62px;
+  padding: 8px 2px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--color-silver);
+  transition:
+    color 300ms ease,
+    background-color 300ms ease;
+}
+
+.gear-btn + .gear-btn {
+  border-left: 1px solid var(--hair);
+}
+
+.gear-btn:hover {
+  color: var(--color-bone);
+  background: rgba(245, 245, 245, 0.035);
+}
+
+.gear-btn:focus-visible {
+  outline-offset: -3px;
+}
+
+.gear-btn.is-active {
+  color: var(--color-bone);
+}
+
+.gear-num {
+  font: 800 22px / 1 var(--font-display);
+  transition: color 300ms ease;
+}
+
+.gear-btn.is-active .gear-num {
+  color: var(--color-redline);
+}
+
+.gear-label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 600 12px / 1 var(--font-display);
+  letter-spacing: 0.1em;
+}
+
+.gear-indicator {
+  position: absolute;
+  z-index: 1;
+  top: -1px;
+  left: 0;
+  width: 25%;
+  height: 2px;
+  background: var(--color-redline);
+  transform: translateX(calc(var(--gear-index, 0) * 100%));
+  transition: transform 520ms var(--ease-expo);
+  pointer-events: none;
+}
+
+/* ───────────────────────── Body copy ───────────────────────── */
+
+.hero-body {
+  position: relative;
+  z-index: 2;
+  margin-top: 26px;
+}
+
+/* ───────────────────────── Bottom strip ───────────────────────── */
+
+.info-strip {
+  position: relative;
+  z-index: 10;
+  margin: 44px var(--pad) 0;
+  padding: 18px 0 calc(18px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--hair);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-strip::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background: var(--color-redline);
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.info-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font: 600 13px / 1.3 var(--font-display);
+  letter-spacing: 0.16em;
+  color: var(--color-silver);
+}
+
+.info-index {
+  color: var(--color-bone);
+  font-variant-numeric: tabular-nums;
+}
+
+.info-slash {
+  color: rgba(150, 154, 163, 0.5);
+}
+
+.socials {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-link {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--hair);
+  color: var(--color-silver);
+  transition:
+    color 300ms ease,
+    border-color 300ms ease,
+    background-color 300ms ease;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  color: var(--color-bone);
+  border-color: rgba(245, 245, 245, 0.45);
+  background: rgba(245, 245, 245, 0.05);
+}
+
+/* Touch: inline caption links get a full-size target */
+@media (pointer: coarse) {
+  .gear-caption-cta {
+    min-height: 44px;
+  }
+}
+
+/* ───────────────────────── Narrow phones: stacked buttons ───────────────────────── */
+
+@media (max-width: 479px) {
+  .actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .gear-label {
+    font-size: 11px;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* ───────────────────────── Mobile & tablet portrait (< 1024) ───────────────────────── */
+
+@media (max-width: 1023px) {
+  /* Environment holds to the first screen; the floor meets the bike, then fades to obsidian */
+  .hero-bg-env {
+    bottom: auto;
+    height: max(100svh, 640px);
+    mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+  }
+
+  .hero-bg-env img {
+    object-position: 50% 62%;
+  }
+
+  .hero-bg-vignette {
+    background:
+      linear-gradient(180deg, rgba(8, 9, 12, 0.7) 0%, rgba(8, 9, 12, 0) 34%),
+      linear-gradient(0deg, rgba(8, 9, 12, 0.9) 0%, rgba(8, 9, 12, 0) 30%);
+  }
+
+  .hero-bg-glow {
+    top: 34svh;
+    bottom: auto;
+    right: -30vw;
+    width: 120vw;
+    height: 70vw;
+  }
+
+  .hero-bg-guides {
+    background-size: calc(100% / 4) 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-bg-lines {
+    display: none;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .gear-plate {
+    width: min(100%, 640px);
+    margin-inline: auto;
+  }
+
+  .hero-title,
+  .hero-body {
+    width: min(100%, 640px);
+    margin-inline: auto;
+  }
+
+  .site-header {
+    width: min(calc(100% - 2 * var(--pad)), 640px);
+    margin-inline: auto;
+    padding: 0;
+  }
+
+  .info-strip {
+    width: min(calc(100% - 2 * var(--pad)), 640px);
+    margin-inline: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* ───────────────────────── Desktop composition (≥ 1024) ───────────────────────── */
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-h: 84px;
+    --strip-h: 68px;
+    --stage-gap: clamp(14px, 3svh, 36px);
+    --plate-top: clamp(4px, 1.4svh, 18px);
+    --plate-h: 196px;
+    --col-w: min(46vw, 760px);
+    --h1: clamp(3.5rem, min(6.5vw, 11.6svh), 6rem);
+    /* Bike silhouette width: as wide as allowed, while its top clears the gear plate and its wheels the strip.
+       --plate-clear: the share of bike height that may sit beside the plate (tall plate sits over the low tail). */
+    --bike-max: 52vw;
+    --plate-clear: 0.85;
+    --plate-gap: 36px;
+    --bike-w: min(
+      var(--bike-max),
+      calc((100svh - 220px) * 1.38),
+      calc(
+        (100svh - var(--nav-h) - var(--strip-h) - var(--stage-gap) - var(--plate-top) - var(--plate-h) - var(--plate-gap)) /
+          var(--plate-clear) * 1.383
+      )
+    );
+  }
+
+  .hero {
+    height: 100svh;
+    min-height: 640px;
+  }
+
+  .nav-desktop {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .btn-katalog {
+    height: 44px;
+    padding: 0 16px 0 20px;
+  }
+
+  .hero-main {
+    justify-content: center;
+    padding: 0 var(--pad) calc(var(--stage-gap) + 8px);
+  }
+
+  .hero-title,
+  .hero-body {
+    width: var(--col-w);
+  }
+
+  .hero-body {
+    margin-top: clamp(20px, 3.4svh, 36px);
+  }
+
+  .hero-description {
+    font-size: clamp(15px, 1.15vw, 17px);
+  }
+
+  .actions {
+    margin-top: clamp(22px, 3.8svh, 40px);
+  }
+
+  .stage {
+    position: absolute;
+    right: calc(var(--pad) - 1.8vw);
+    bottom: var(--stage-gap);
+    width: var(--bike-w);
+    margin: 0;
+  }
+
+  .stage-sweep {
+    display: block;
+  }
+
+  /* Equipment steps forward slightly left of the bike's centre, toward open floor */
+  .stage-product {
+    right: 14%;
+  }
+
+  .stage-product--square {
+    bottom: 4%;
+    width: 64%;
+  }
+
+  .stage-product--tall {
+    height: 92%;
+    bottom: -2%;
+  }
+
+  .gear-plate {
+    position: absolute;
+    top: var(--plate-top);
+    right: var(--pad);
+    width: 392px;
+    margin: 0;
+  }
+
+  .gear-btn {
+    min-height: 56px;
+  }
+
+  .gear-track {
+    margin-top: 12px;
+  }
+
+  .info-strip {
+    margin-top: 0;
+    min-height: var(--strip-h);
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .info-list {
+    flex-direction: row;
+    gap: clamp(20px, 3.2vw, 56px);
+  }
+
+  .info-item {
+    white-space: nowrap;
+  }
+}
+
+/* Narrow desktop: give the headline column priority over bike scale */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root {
+    --col-w: 46vw;
+    --bike-max: 48vw;
+    --h1: clamp(3.25rem, min(6.2vw, 11svh), 5rem);
+  }
+
+  .gear-plate {
+    width: 360px;
+  }
+
+  .info-item {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Laptop heights (1366×768, 1280×720…): the gear plate lies flat in one row so the bike keeps its scale */
+@media (min-width: 1280px) and (max-height: 820px) {
+  :root {
+    --plate-h: 128px;
+    --plate-clear: 1;
+    --plate-gap: 22px;
+  }
+
+  .gear-plate {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 296px;
+    width: min(700px, calc(100vw - 3 * var(--pad) - 6.15 * var(--h1)));
+    height: var(--plate-h);
+    padding: 0 0 0 18px;
+  }
+
+  .gear-head {
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr);
+    padding-right: 16px;
+  }
+
+  /* the active numeral already burns red in the track */
+  .gear-readout {
+    display: none;
+  }
+
+  .gear-caption-title {
+    font-size: 22px;
+  }
+
+  .gear-caption-text {
+    margin: 5px 0 4px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .gear-caption-cta {
+    min-height: 24px;
+    font-size: 13px;
+  }
+
+  .gear-track {
+    margin: 0;
+    border-top: 0;
+    border-left: 1px solid var(--hair);
+  }
+
+  .gear-btn {
+    min-height: 0;
+    height: 100%;
+  }
+
+  .gear-label {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Short desktop windows: the hero may grow instead of crushing the composition */
+@media (min-width: 1024px) and (max-height: 639px) {
+  .hero {
+    height: auto;
+  }
+}
+
+/* ───────────────────────── Development mode: holding page (/) + demo tag (/demo) ───────────────────────── */
+
+.holding-main {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  align-content: center;
+  gap: 40px;
+  padding: 18px var(--pad) calc(32px + env(safe-area-inset-bottom));
+}
+
+/* Developer contacts: an instrument plate with hairline-ruled rows, no red (the CTA carries it) */
+.contact-plate {
+  position: relative;
+  background: rgba(24, 26, 32, 0.82);
+  border: 1px solid var(--hair);
+}
+
+.contact-head {
+  padding: 18px 20px 16px;
+  border-bottom: 1px solid var(--hair);
+}
+
+.contact-name {
+  margin: 0;
+  font: 700 26px / 1 var(--font-display);
+  letter-spacing: 0.02em;
+  color: var(--color-bone);
+}
+
+.contact-role {
+  margin: 8px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.contact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-list li + li {
+  border-top: 1px solid var(--hair);
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 16px;
+  min-height: 60px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--color-bone);
+  transition: background-color 300ms ease;
+}
+
+.contact-row:hover,
+.contact-row:focus-visible {
+  background: rgba(245, 245, 245, 0.05);
+}
+
+.contact-row:focus-visible {
+  outline-offset: -2px;
+}
+
+.contact-icon {
+  display: grid;
+  color: var(--color-silver);
+  transition: color 300ms ease;
+}
+
+.contact-text {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.contact-label {
+  font: 600 12px / 1 var(--font-display);
+  letter-spacing: 0.16em;
+  color: var(--color-silver);
+}
+
+.contact-value {
+  font-size: 15px;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.contact-arrow {
+  color: var(--color-silver);
+  transition:
+    transform 400ms var(--ease-expo),
+    color 300ms ease;
+}
+
+.contact-row:hover .contact-icon,
+.contact-row:focus-visible .contact-icon,
+.contact-row:hover .contact-arrow,
+.contact-row:focus-visible .contact-arrow {
+  color: var(--color-bone);
+}
+
+.contact-row:hover .contact-arrow,
+.contact-row:focus-visible .contact-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* /demo: the DEMO tag sits beside the wordmark and leads back to the holding page */
+.brand-cluster {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.demo-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 8px 0 calc(8px + 0.18em);
+  border: 1px solid var(--hair-strong);
+  font: 700 12px / 1 var(--font-display);
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  color: var(--color-silver);
+  transition:
+    color 300ms ease,
+    border-color 300ms ease;
+}
+
+.demo-tag:hover,
+.demo-tag:focus-visible {
+  color: var(--color-bone);
+  border-color: rgba(245, 245, 245, 0.7);
+}
+
+@media (max-width: 479px) {
+  /* Wordmark + DEMO tag + KATALOG + menu do not fit a phone row; KATALOG stays in the menu and the CTAs */
+  .hero--demo .btn-katalog {
+    display: none;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .holding-copy,
+  .contact-plate {
+    width: min(100%, 640px);
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .holding {
+    height: auto;
+    min-height: max(100svh, 640px);
+  }
+
+  .holding-main {
+    grid-template-columns: minmax(0, 1fr) min(38vw, 540px);
+    align-items: center;
+    column-gap: clamp(40px, 6vw, 112px);
+    padding: 0 var(--pad) calc(var(--nav-h) * 0.6);
+  }
+
+  .contact-row {
+    min-height: 58px;
+  }
+
+  /* Label and value share one line on desktop: a ruled two-column ledger */
+  .contact-text {
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: baseline;
+    gap: 16px;
+  }
+}
+
+/* ───────────────────────── Keyframes ───────────────────────── */
+
+@keyframes ky-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ky-line-up {
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes ky-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ky-env {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ky-bike {
+  from {
+    opacity: 0;
+    transform: translateX(6%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ky-sweep {
+  0% {
+    opacity: 0;
+    background-position: 130% 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-position: -30% 0;
+  }
+}
+
+@keyframes ky-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ky-curtain {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes ky-push {
+  to {
+    transform: scale(1.06);
+    filter: blur(6px);
+  }
+}
+
+@keyframes ky-mark {
+  from {
+    opacity: 0;
+    letter-spacing: 0.32em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.08em;
+  }
+}
+
+@keyframes ky-scale-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ───────────────────────── Reduced motion: the still composition ───────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .stage-sweep {
+    display: none !important;
+  }
+}

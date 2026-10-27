@@ -1,0 +1,171 @@
+{
+  "brand": "KASKADYOR",
+  "path_base": "/assets/kaskadyor/",
+  "assets": [
+    {
+      "name": "hero-motorcycle.png",
+      "relative_path": "hero/hero-motorcycle.png",
+      "type": "png",
+      "width": 2000,
+      "height": 1500,
+      "file_size_bytes": 1856797,
+      "transparency": true,
+      "intended_use": "Independent animated motorcycle layer",
+      "generation_status": "created",
+      "provenance": "image_gen edit + padded export",
+      "optimization_status": "optimized",
+      "sha256": "79673c95e27344201d5a0d5a061b5303a08bde41bed4affc999e97c9d3497128"
+    },
+    {
+      "name": "hero-motorcycle.webp",
+      "relative_path": "hero/hero-motorcycle.webp",
+      "type": "webp",
+      "width": 2000,
+      "height": 1500,
+      "file_size_bytes": 278202,
+      "transparency": true,
+      "intended_use": "Optimized independent motorcycle layer",
+      "generation_status": "created",
+      "provenance": "image_gen edit + padded export",
+      "optimization_status": "optimized",
+      "sha256": "2e3a2966926efb03221711b987c9df04c7cfccd7c4b233d1a2b9eaa7aa9e49c5"
+    },
+    {
+      "name": "hero-background.webp",
+      "relative_path": "hero/hero-background.webp",
+      "type": "webp",
+      "width": 2560,
+      "height": 1440,
+      "file_size_bytes": 124094,
+      "transparency": false,
+      "intended_use": "Desktop hero background",
+      "generation_status": "created",
+      "provenance": "image_gen + restrained brightness and edge blend",
+      "optimization_status": "optimized",
+      "sha256": "18dd45b5abe85984af9495e130fbd13c34689a20bacb9c7aa56572bd5ad82ba8"
+    },
+    {
+      "name": "hero-background-mobile.webp",
+      "relative_path": "hero/hero-background-mobile.webp",
+      "type": "webp",
+      "width": 1080,
+      "height": 1920,
+      "file_size_bytes": 93154,
+      "transparency": false,
+      "intended_use": "Dedicated mobile hero background",
+      "generation_status": "created",
+      "provenance": "image_gen + restrained brightness and edge blend",
+      "optimization_status": "optimized",
+      "sha256": "31bde124474247e1f32d4545b705ca776b1affbf0db90e3dc0f5b8d5ba88663c"
+    },
+    {
+      "name": "helmet.webp",
+      "relative_path": "products/helmet.webp",
+      "type": "webp",
+      "width": 1000,
+      "height": 1000,
+      "file_size_bytes": 123150,
+      "transparency": true,
+      "intended_use": "Transparent equipment presentation",
+      "generation_status": "created",
+      "provenance": "image_gen + padded export",
+      "optimization_status": "optimized",
+      "sha256": "cb4057d87b214366c1b8dcae7ec69665c1685379281b74af67ef58fce009082f"
+    },
+    {
+      "name": "gloves.webp",
+      "relative_path": "products/gloves.webp",
+      "type": "webp",
+      "width": 1000,
+      "height": 1000,
+      "file_size_bytes": 233926,
+      "transparency": true,
+      "intended_use": "Transparent equipment presentation",
+      "generation_status": "created",
+      "provenance": "image_gen + padded export",
+      "optimization_status": "optimized",
+      "sha256": "d0361f05eb9e48e86483d68f9d4a915ad3c9cc29d719ae46607df8cb31008d5d"
+    },
+    {
+      "name": "racing-suit.webp",
+      "relative_path": "products/racing-suit.webp",
+      "type": "webp",
+      "width": 1000,
+      "height": 1400,
+      "file_size_bytes": 148480,
+      "transparency": true,
+      "intended_use": "Transparent equipment presentation",
+      "generation_status": "created",
+      "provenance": "image_gen + padded export",
+      "optimization_status": "optimized",
+      "sha256": "fa0650c0da46cde330ed2e56e0854a4bd1304e4e665643c87ae3da7aacf5b9aa"
+    },
+    {
+      "name": "racing-overlay.svg",
+      "relative_path": "effects/racing-overlay.svg",
+      "type": "svg",
+      "width": 1920,
+      "height": 1080,
+      "file_size_bytes": 492,
+      "transparency": true,
+      "intended_use": "CSS animated decorative overlay",
+      "generation_status": "created",
+      "provenance": "programmatic SVG",
+      "optimization_status": "minimal paths, no filters",
+      "sha256": "4dd0d92c87bb3364f5c3dfddd2f54a52cb13e2309444b4edcc473f5758d9840b"
+    },
+    {
+      "name": "carbon-texture.webp",
+      "relative_path": "effects/carbon-texture.webp",
+      "type": "webp",
+      "width": 1024,
+      "height": 1024,
+      "file_size_bytes": 790,
+      "transparency": false,
+      "intended_use": "Very low opacity seamless carbon detail",
+      "generation_status": "created",
+      "provenance": "procedural periodic twill",
+      "optimization_status": "lossless periodic tile",
+      "sha256": "511ce61916935066fb2c59cc9a25288264a03e47127415deca3adb3df7107cad"
+    },
+    {
+      "name": "hero-poster.webp",
+      "relative_path": "hero/hero-poster.webp",
+      "type": "webp",
+      "width": 1920,
+      "height": 1080,
+      "file_size_bytes": 181014,
+      "transparency": false,
+      "intended_use": "Composition reference; no UI baked in",
+      "generation_status": "created",
+      "provenance": "Pillow composite of actual generated layers",
+      "optimization_status": "optimized",
+      "sha256": "295f0da8a29b1ac458e5cf17c4f776f58d6735a86d62b9933934eb8d2900178d"
+    },
+    {
+      "name": "asset-contact-sheet.webp",
+      "relative_path": "previews/asset-contact-sheet.webp",
+      "type": "webp",
+      "width": 1600,
+      "height": 1420,
+      "file_size_bytes": 105896,
+      "transparency": false,
+      "intended_use": "Labeled preview of ten delivery image/vector exports",
+      "generation_status": "created",
+      "provenance": "Pillow contact sheet",
+      "optimization_status": "optimized",
+      "sha256": "745145900382599e34fbb53f5325e699af7b21ac5730e3f5acd8cfa319ecf015"
+    }
+  ],
+  "pending": [
+    {
+      "name": "kaskadyor-logo.png",
+      "reason": "No authentic reference in repository; Instagram fetch failed. Not created and not listed as an asset."
+    }
+  ],
+  "notes": [
+    "AI concept imagery, not photographs of verified store inventory.",
+    "Some exports upscale native generation; inspect source dimensions in QA report.",
+    "Sources are archival, not frontend delivery assets."
+  ]
+}

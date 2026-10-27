@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "dist/index.html"
+        ],
+        "createdAt": "2026-10-12T10:38:22.708Z",
+        "reason": "Agent: gear-track is a segmented control whose cells center their own text with 8px padding; info-strip's top rule is a separator, not a container edge"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "src/styles/index.css"
+        ],
+        "createdAt": "2026-10-12T10:38:22.735Z",
+        "reason": "Agent: gear-track is a segmented control whose cells center their own text with 8px padding; info-strip's top rule is a separator, not a container edge"
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "dist/index.html"
+        ],
+        "createdAt": "2026-10-12T10:38:22.760Z",
+        "reason": "Agent: brief pins a subtle carbon layer; the supplied weave is luma 15–22, shown at 0.5 opacity — visible as material, verified in crop"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "dist/index.html"
+        ],
+        "createdAt": "2026-10-12T10:38:27.145Z",
+        "reason": "Agent: wide tracking is applied only to short uppercase Barlow Condensed labels (lead-in, CTAs, nav, gear labels, info strip); running body text (Manrope) uses 0"
+      }
+    ]
+  }
+}

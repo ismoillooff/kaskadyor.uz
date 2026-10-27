@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-12T13:08:21+00:00",
+  "title": "Design System: Kaskadyor",
+  "extensions": {
+    "colorMeta": {
+      "obsidian": {
+        "role": "neutral",
+        "displayName": "Obsidian",
+        "canonical": "oklch(14.0% 0.007 270)",
+        "tonalRamp": [
+          "#0a0b0e",
+          "#232427",
+          "#3e4043",
+          "#5c5d62",
+          "#7b7d81",
+          "#9d9ea3",
+          "#c2c4c9",
+          "#eceef3"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Plate Surface",
+        "canonical": "oklch(21.8% 0.012 271)",
+        "tonalRamp": [
+          "#090b10",
+          "#22242a",
+          "#3d4046",
+          "#5b5d65",
+          "#7a7d85",
+          "#9b9ea6",
+          "#c1c4cc",
+          "#ebeef7"
+        ]
+      },
+      "redline": {
+        "role": "primary",
+        "displayName": "Redline",
+        "canonical": "oklch(60.3% 0.235 27)",
+        "tonalRamp": [
+          "#220000",
+          "#4a0305",
+          "#780f10",
+          "#b00c15",
+          "#e8111f",
+          "#ff645a",
+          "#ffaba1",
+          "#fee9e6"
+        ]
+      },
+      "redline-hot": {
+        "role": "primary",
+        "displayName": "Redline Hot",
+        "canonical": "oklch(64.4% 0.242 26)",
+        "tonalRamp": [
+          "#210000",
+          "#4b0105",
+          "#7a0a11",
+          "#b20016",
+          "#e2292e",
+          "#f96a62",
+          "#fbada4",
+          "#fee9e6"
+        ]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "oklch(97.0% 0 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "silver": {
+        "role": "neutral",
+        "displayName": "Silver",
+        "canonical": "oklch(68.6% 0.014 267)",
+        "tonalRamp": [
+          "#080b11",
+          "#21242b",
+          "#3c4047",
+          "#5a5e66",
+          "#797d86",
+          "#9a9ea7",
+          "#c0c4cd",
+          "#eaeef8"
+        ]
+      },
+      "text-soft": {
+        "role": "neutral",
+        "displayName": "Soft Bone",
+        "canonical": "rgba(245, 245, 245, 0.76)"
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(150, 154, 163, 0.2)"
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "rgba(245, 245, 245, 0.3)"
+      },
+      "on-redline": {
+        "role": "neutral",
+        "displayName": "On-Redline White",
+        "canonical": "#FFFFFF",
+        "purpose": "Label colour on Redline/Redline Hot fills only (primary CTA, ::selection text); large text only (19px/700, ~4.4:1 on Redline, ~3.7:1 on Redline Hot)."
+      },
+      "shade": {
+        "role": "neutral",
+        "displayName": "Shade",
+        "canonical": "#000000",
+        "purpose": "Shading tone only, never a surface: bike contact shadow (.88 to .45), equipment floor ellipse and menu-sheet shadow (.8), equipment drop shadow (.7), opaque stop in mask-image gradients.",
+        "alphaSteps": [
+          "rgba(0, 0, 0, 0.88)",
+          "rgba(0, 0, 0, 0.8)",
+          "rgba(0, 0, 0, 0.7)",
+          "rgba(0, 0, 0, 0.45)"
+        ]
+      },
+      "specular": {
+        "role": "neutral",
+        "displayName": "Specular",
+        "canonical": "rgba(255, 255, 255, 0.5)",
+        "purpose": "The single soft-light highlight in the one-pass sweep across the bike, masked to its alpha."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Three-line hero H1 only; size is the per-breakpoint --h1 clamp."
+      },
+      "lead-in": {
+        "displayName": "Lead-in",
+        "purpose": "The headline's first beat in silver, 0.36 x H1; part of the headline group, not a label."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Gear readout digit in its fixed rolling window."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Gear caption titles."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Primary and ghost CTA labels; 19px bold keeps white-on-red at large-text contrast."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Nav links at 15px; smaller steps are label-md and label-sm."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Hero description, max 40ch; fluid to body-lg on >=1024."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Gear captions, max 36ch."
+      },
+      "title-sm": {
+        "displayName": "Title Small",
+        "purpose": "Gear caption title in the flat laptop plate (>=1280 wide, <=820 tall)."
+      },
+      "label-md": {
+        "displayName": "Label Medium",
+        "purpose": "Gear labels; info strip at 1024-1279."
+      },
+      "label-sm": {
+        "displayName": "Label Small",
+        "purpose": "Gear labels on phones <480 and in the flat plate; gear instrument label."
+      },
+      "body-lg": {
+        "displayName": "Body Large",
+        "purpose": "Top endpoint of the fluid desktop description, clamp(15px, 1.15vw, 17px)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "bike-contact",
+        "value": "radial-gradient(48% 40% at 50% 48%, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 55%, transparent 100%)",
+        "purpose": "Contact shadow under the bike on the floor line."
+      },
+      {
+        "name": "product-drop",
+        "value": "drop-shadow(0 26px 30px rgba(0,0,0,0.7))",
+        "purpose": "Filter on equipment cutouts only, seating them on the floor."
+      },
+      {
+        "name": "menu-sheet",
+        "value": "0 30px 60px -20px rgba(0,0,0,0.8)",
+        "purpose": "Mobile menu sheet over the page."
+      },
+      {
+        "name": "red-glow",
+        "value": "radial-gradient(closest-side, rgba(237,28,36,0.16), rgba(237,28,36,0.05) 55%, transparent 100%)",
+        "purpose": "The scene's single red light source behind the bike."
+      },
+      {
+        "name": "product-floor",
+        "value": "radial-gradient(42% 14% at 50% 96%, rgba(0,0,0,0.8) 0%, transparent 100%)",
+        "purpose": "Floor ellipse beneath equipment cutouts."
+      },
+      {
+        "name": "specular-sweep",
+        "value": "linear-gradient(100deg, transparent 38%, rgba(255,255,255,0.5) 50%, transparent 62%); mix-blend-mode: soft-light",
+        "purpose": "One-pass light sweep across the bike, masked to its alpha."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All movement: entrances, underlines, gear indicator, focus pull."
+      },
+      {
+        "name": "ease-color",
+        "value": "300ms ease",
+        "purpose": "Colour, border and background fades on controls."
+      },
+      {
+        "name": "reveal",
+        "value": "ky-rise 1000ms expo-out; from opacity 0, translateY(18px); delay calc(var(--d) - var(--intro-shift))",
+        "purpose": "Shared entrance for hero blocks."
+      },
+      {
+        "name": "headline-line-up",
+        "value": "ky-line-up 1100ms expo-out from translateY(108%) inside an overflow mask; 90ms stagger",
+        "purpose": "Headline lines."
+      },
+      {
+        "name": "intro-shift",
+        "value": "0ms first visit; 780ms when intro already seen this session",
+        "purpose": "Pulls the whole choreography forward on repeat visits."
+      },
+      {
+        "name": "focus-pull",
+        "value": "700ms expo-out; bike -> opacity .3, scale .965, blur 5px (blur only >=1024); product in from opacity 0, y 28px, scale .94, blur 10px; out to y -12px, scale 1.02, blur 8px",
+        "purpose": "Gear change racks focus from machine to equipment."
+      },
+      {
+        "name": "gear-indicator",
+        "value": "transform 520ms expo-out",
+        "purpose": "Red bar sliding along the gear track."
+      },
+      {
+        "name": "parallax",
+        "value": "spring stiffness 55, damping 18, mass .9; bike 12/7px, glow -36/-18px",
+        "purpose": "Pointer-driven depth only."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "durations 1ms, no intro curtain, no specular sweep",
+        "purpose": "Still final composition."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow-phone",
+        "value": "max-width: 479px"
+      },
+      {
+        "name": "tablet",
+        "value": "640px-1023px"
+      },
+      {
+        "name": "no-lines",
+        "value": "max-width: 767px"
+      },
+      {
+        "name": "desktop",
+        "value": "min-width: 1024px"
+      },
+      {
+        "name": "narrow-desktop",
+        "value": "1024px-1279px"
+      },
+      {
+        "name": "laptop-flat-plate",
+        "value": "min-width: 1280px and max-height: 820px"
+      },
+      {
+        "name": "short-desktop",
+        "value": "min-width: 1024px and max-height: 639px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one red action per view: route to the Telegram catalog.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">EKIPIROVKALARNI KO‘RISH <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:56px;padding:0 22px 0 26px;border:0;border-radius:0;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:19px;line-height:1;letter-spacing:.07em;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 300ms ease,border-color 300ms ease,transform 400ms var(--ease-expo);} .ds-btn svg{transition:transform 500ms var(--ease-expo);} .ds-btn:hover svg,.ds-btn:focus-visible svg{transform:translateX(5px);} .ds-btn:focus-visible{outline:2px solid var(--color-bone);outline-offset:3px;} .ds-btn-primary{background:var(--color-redline);color:var(--on-redline);} .ds-btn-primary:hover{background:var(--red-hot);transform:translateY(-2px);} .ds-btn-primary:active{transform:translateY(0);}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action framed in a strong hairline; external links use a diagonal arrow.",
+      "html": "<div style=\"background:#08090c;padding:24px\"><a class=\"ds-btn ds-btn-ghost\" href=\"#\">BIZ BILAN BOG‘LANISH <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></div>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:56px;padding:0 22px 0 26px;border:0;border-radius:0;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:19px;line-height:1;letter-spacing:.07em;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 300ms ease,border-color 300ms ease,transform 400ms var(--ease-expo);} .ds-btn svg{transition:transform 500ms var(--ease-expo);} .ds-btn:hover svg,.ds-btn:focus-visible svg{transform:translateX(5px);} .ds-btn:focus-visible{outline:2px solid var(--color-bone);outline-offset:3px;} .ds-btn-ghost{background:rgba(8,9,12,.35);color:var(--color-bone);border:1px solid var(--hair-strong);} .ds-btn-ghost:hover{border-color:rgba(245,245,245,.7);background:rgba(245,245,245,.06);transform:translateY(-2px);} .ds-btn-ghost:hover svg{transform:translate(3px,-3px);}"
+    },
+    {
+      "name": "KATALOG Header Button",
+      "kind": "button",
+      "refersTo": "button-katalog",
+      "description": "Header catalog link; the only header element that warms to red on hover.",
+      "html": "<div style=\"background:#08090c;padding:24px\"><a class=\"ds-katalog\" href=\"#\">KATALOG <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></div>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-katalog{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px 0 20px;border:1px solid var(--hair-strong);border-radius:0;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:15px;line-height:1;letter-spacing:.14em;color:var(--color-bone);text-decoration:none;transition:background-color 300ms ease,border-color 300ms ease;} .ds-katalog svg{transition:transform 400ms var(--ease-expo);} .ds-katalog:hover,.ds-katalog:focus-visible{background:rgba(237,28,36,.14);border-color:var(--color-redline);outline:none;} .ds-katalog:hover svg{transform:translate(2px,-2px);}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Silver tracked capitals; current and hover turn bone with a left-drawn 1px underline.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-link\">EKIPIROVKA</a><a href=\"#\" class=\"ds-nav-link\" aria-current=\"page\">EHTIYOT QISMLAR</a><a href=\"#\" class=\"ds-nav-link\">ALOQA</a></nav>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-nav{display:flex;gap:40px;background:var(--color-obsidian);padding:12px 24px;} .ds-nav-link{position:relative;display:inline-flex;align-items:center;min-height:44px;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:15px;line-height:1;letter-spacing:.16em;color:var(--color-silver);text-decoration:none;transition:color 300ms ease;} .ds-nav-link::after{content:'';position:absolute;left:0;right:.16em;bottom:10px;height:1px;background:var(--color-bone);transform:scaleX(0);transform-origin:left;transition:transform 500ms var(--ease-expo);} .ds-nav-link:hover,.ds-nav-link:focus-visible,.ds-nav-link[aria-current]{color:var(--color-bone);outline:none;} .ds-nav-link:hover::after,.ds-nav-link:focus-visible::after,.ds-nav-link[aria-current]::after{transform:scaleX(1);}"
+    },
+    {
+      "name": "Gear Selector",
+      "kind": "custom",
+      "refersTo": "gear-plate",
+      "description": "Signature instrument plate: readout numeral, stacked captions, four-cell gear track with a sliding red indicator.",
+      "html": "<div class=\"ds-gear\"><div class=\"ds-gear-head\"><div class=\"ds-gear-readout\"><span class=\"ds-gear-rl\">UZATMA</span><span class=\"ds-gear-digit\">1</span></div><div><h3 class=\"ds-gear-title\">MOTOSHLEMLAR</h3><p class=\"ds-gear-text\">Yo‘ldagi eng muhim himoya to‘g‘ri tanlangan shlemdan boshlanadi.</p></div></div><div class=\"ds-gear-track\" role=\"radiogroup\" aria-label=\"Uzatma\"><span class=\"ds-gear-ind\"></span><button class=\"ds-gear-btn\" role=\"radio\" aria-checked=\"false\"><b>N</b><span>MOTO</span></button><button class=\"ds-gear-btn is-active\" role=\"radio\" aria-checked=\"true\"><b>1</b><span>MOTOSHLEMLAR</span></button><button class=\"ds-gear-btn\" role=\"radio\" aria-checked=\"false\"><b>2</b><span>QO‘LQOPLAR</span></button><button class=\"ds-gear-btn\" role=\"radio\" aria-checked=\"false\"><b>3</b><span>EKIPIROVKALAR</span></button></div></div>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-gear{width:392px;padding:16px 18px 0;background:rgba(24,26,32,.82);border:1px solid var(--hair);border-radius:0;color:var(--color-bone);} .ds-gear-head{display:grid;grid-template-columns:58px 1fr;gap:14px;} .ds-gear-readout{display:flex;flex-direction:column;gap:6px;} .ds-gear-rl{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:11px;line-height:1;letter-spacing:.22em;color:var(--color-silver);} .ds-gear-digit{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:76px;line-height:68px;color:var(--color-redline);} .ds-gear-title{margin:0;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:26px;line-height:1;letter-spacing:.02em;} .ds-gear-text{margin:7px 0 9px;font-family:'Manrope Variable','Manrope',system-ui,sans-serif;font-size:13.5px;line-height:1.5;color:var(--text-soft);} .ds-gear-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin:14px -18px 0;border-top:1px solid var(--hair);} .ds-gear-ind{position:absolute;top:-1px;left:0;width:25%;height:2px;background:var(--color-redline);transform:translateX(100%);transition:transform 520ms var(--ease-expo);} .ds-gear-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:56px;padding:8px 2px;border:0;background:none;cursor:pointer;color:var(--color-silver);transition:color 300ms ease,background-color 300ms ease;} .ds-gear-btn+.ds-gear-btn{border-left:1px solid var(--hair);} .ds-gear-btn b{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:22px;line-height:1;} .ds-gear-btn span{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:12px;line-height:1;letter-spacing:.1em;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} .ds-gear-btn:hover{color:var(--color-bone);background:rgba(245,245,245,.035);} .ds-gear-btn:focus-visible{outline:2px solid var(--color-bone);outline-offset:-3px;} .ds-gear-btn.is-active{color:var(--color-bone);} .ds-gear-btn.is-active b{color:var(--color-redline);}"
+    },
+    {
+      "name": "Hero Headline",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Lead-in at 0.36 x H1 in silver, then three tight condensed lines with the last in redline.",
+      "html": "<hgroup class=\"ds-hl\"><p class=\"ds-hl-lead\">BU SHUNCHAKI HAYDASH EMAS.</p><h1 class=\"ds-hl-h1\"><span>TEZLIKNI</span><span>HIS QIL.</span><span class=\"ds-hl-acc\">HIMOYANI TANLA.</span></h1></hgroup>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-hl{--h1:clamp(3.25rem,8vw,6rem);margin:0;padding:24px;background:var(--color-obsidian);} .ds-hl-lead{margin:0 0 .3em;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:calc(var(--h1)*.36);line-height:1;letter-spacing:.01em;color:var(--color-silver);} .ds-hl-h1{margin:0;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:var(--h1);line-height:.9;letter-spacing:-.01em;color:var(--color-bone);} .ds-hl-h1 span{display:block;} .ds-hl-acc{color:var(--color-redline);}"
+    },
+    {
+      "name": "Info Strip",
+      "kind": "custom",
+      "refersTo": "info-strip",
+      "description": "Hairline bottom rule with a 40px red micro-accent, indexed tracked items and square social frames.",
+      "html": "<div class=\"ds-strip\"><ul class=\"ds-strip-list\"><li><b>01</b><i>/</i>PREMIUM EKIPIROVKA</li><li><b>02</b><i>/</i>O‘ZBEKISTON BO‘YLAB YETKAZISH</li></ul><a class=\"ds-social\" href=\"#\" aria-label=\"Telegram\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14.5 21.5 22 2 2 9.5l7.5 3 5 9Z\"/><path d=\"M9.5 12.5 22 2\"/></svg></a></div>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-strip{position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:68px;border-top:1px solid var(--hair);background:var(--color-obsidian);} .ds-strip::before{content:'';position:absolute;top:-1px;left:0;width:40px;height:1px;background:var(--color-redline);} .ds-strip-list{display:flex;gap:40px;margin:0;padding:0;list-style:none;} .ds-strip-list li{display:flex;gap:8px;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:13px;line-height:1.3;letter-spacing:.16em;color:var(--color-silver);} .ds-strip-list b{font-weight:600;color:var(--color-bone);font-variant-numeric:tabular-nums;} .ds-strip-list i{font-style:normal;color:rgba(150,154,163,.5);} .ds-social{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--hair);border-radius:0;color:var(--color-silver);transition:color 300ms ease,border-color 300ms ease,background-color 300ms ease;} .ds-social:hover,.ds-social:focus-visible{color:var(--color-bone);border-color:rgba(245,245,245,.45);background:rgba(245,245,245,.05);outline:none;}"
+    },
+    {
+      "name": "Contact Plate",
+      "kind": "card",
+      "refersTo": "contact-plate",
+      "description": "Development mode only: instrument plate with the developer's name and role over hairline-ruled full-row contact links (Silver stroke icon, tracked label, Manrope value, diagonal arrow). Never red.",
+      "html": "<article class=\"ds-contact\"><div class=\"ds-contact-head\"><h2 class=\"ds-contact-name\">ISMOILLOOFF</h2><p class=\"ds-contact-role\">Hayotbek Ismoilov — Full-Stack dasturchi</p></div><ul class=\"ds-contact-list\"><li><a class=\"ds-contact-row\" href=\"#\"><span class=\"ds-contact-icon\" aria-hidden=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21.3 3.6 2.9 10.8c-.62.24-.6 1.12.03 1.32l4.7 1.5 1.8 5.7c.17.53.84.69 1.23.3l2.6-2.55 4.8 3.55c.49.36 1.18.09 1.3-.5l2.95-15.2c.12-.62-.48-1.12-1.06-.9Z\"/><path d=\"m7.6 13.6 10.1-6.6-7.4 7.9-.6 4.3\"/></svg></span><span class=\"ds-contact-text\"><span class=\"ds-contact-label\">TELEGRAM</span><span class=\"ds-contact-value\">@ismoillooff</span></span><svg class=\"ds-contact-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></li><li><a class=\"ds-contact-row\" href=\"#\"><span class=\"ds-contact-icon\" aria-hidden=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3.6 20.4 4.9 16A8.6 8.6 0 1 1 8 19.1Z\"/><path d=\"M9.2 8.4c.2-.4.6-.5.9-.4l.8.3c.3.1.4.4.3.7l-.5 1.3c.5 1.2 1.4 2.1 2.6 2.6l1.3-.5c.3-.1.6 0 .7.3l.3.8c.1.3 0 .7-.4.9-1 .6-2.3.5-3.6-.3a7.6 7.6 0 0 1-2.7-2.7c-.8-1.3-.9-2.6-.3-3.6Z\"/></svg></span><span class=\"ds-contact-text\"><span class=\"ds-contact-label\">WHATSAPP</span><span class=\"ds-contact-value\">+998 95 005 15 45</span></span><svg class=\"ds-contact-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></li><li><a class=\"ds-contact-row\" href=\"#\"><span class=\"ds-contact-icon\" aria-hidden=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\"/><path d=\"M2 12h20\"/></svg></span><span class=\"ds-contact-text\"><span class=\"ds-contact-label\">SAYT</span><span class=\"ds-contact-value\">ismoillooff.uz</span></span><svg class=\"ds-contact-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></li></ul></article>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-contact{width:540px;max-width:100%;background:rgba(24,26,32,.82);border:1px solid var(--hair);border-radius:0;color:var(--color-bone);} .ds-contact-head{padding:18px 20px 16px;border-bottom:1px solid var(--hair);} .ds-contact-name{margin:0;font:700 26px/1 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.02em;color:var(--color-bone);} .ds-contact-role{margin:8px 0 0;font:400 13.5px/1.5 'Manrope',system-ui,sans-serif;color:var(--text-soft);} .ds-contact-list{margin:0;padding:0;list-style:none;} .ds-contact-list li+li{border-top:1px solid var(--hair);} .ds-contact-row{display:grid;grid-template-columns:20px minmax(0,1fr) 18px;align-items:center;gap:16px;min-height:58px;padding:10px 20px;color:var(--color-bone);text-decoration:none;transition:background-color 300ms ease;} .ds-contact-row:hover,.ds-contact-row:focus-visible{background:rgba(245,245,245,.05);} .ds-contact-row:focus-visible{outline:2px solid var(--color-bone);outline-offset:-2px;} .ds-contact-icon{display:grid;color:var(--color-silver);transition:color 300ms ease;} .ds-contact-text{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:baseline;gap:16px;min-width:0;} .ds-contact-label{font:600 12px/1 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.16em;color:var(--color-silver);} .ds-contact-value{font:400 15px/1.3 'Manrope',system-ui,sans-serif;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;} .ds-contact-arrow{color:var(--color-silver);transition:transform 400ms var(--ease-expo),color 300ms ease;} .ds-contact-row:hover .ds-contact-icon,.ds-contact-row:focus-visible .ds-contact-icon,.ds-contact-row:hover .ds-contact-arrow,.ds-contact-row:focus-visible .ds-contact-arrow{color:var(--color-bone);} .ds-contact-row:hover .ds-contact-arrow,.ds-contact-row:focus-visible .ds-contact-arrow{transform:translate(2px,-2px);} @media (max-width:1023px){.ds-contact-text{grid-template-columns:none;gap:5px;}}"
+    },
+    {
+      "name": "DEMO Tag",
+      "kind": "chip",
+      "refersTo": "demo-tag",
+      "description": "/demo only: square hairline tag beside the wordmark, linking back to the holding page. Never red.",
+      "html": "<div class=\"ds-brand\"><span class=\"ds-wordmark\">KASKADYOR</span><a class=\"ds-demo-tag\" href=\"#\">DEMO</a></div>",
+      "css": ":host{--on-redline:#fff;--color-obsidian:#08090c;--color-surface:#181a20;--color-redline:#ed1c24;--color-bone:#f5f5f5;--color-silver:#969aa3;--red-hot:#ff2b33;--hair:rgba(150,154,163,.2);--hair-strong:rgba(245,245,245,.3);--text-soft:rgba(245,245,245,.76);--ease-expo:cubic-bezier(.16,1,.3,1);} .ds-brand{display:flex;align-items:center;gap:12px;} .ds-wordmark{font:italic 800 26px/1 'Barlow Condensed','Arial Narrow',sans-serif;color:var(--color-bone);} .ds-demo-tag{display:inline-flex;align-items:center;min-height:26px;padding:0 8px 0 calc(8px + .18em);border:1px solid var(--hair-strong);border-radius:0;font:700 12px/1 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.18em;text-decoration:none;color:var(--color-silver);transition:color 300ms ease,border-color 300ms ease;} .ds-demo-tag:hover,.ds-demo-tag:focus-visible{color:var(--color-bone);border-color:rgba(245,245,245,.7);} .ds-demo-tag:focus-visible{outline:2px solid var(--color-bone);outline-offset:3px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Garage",
+    "overview": "**Creative North Star: \"The Night Garage\"**\n\nOne machine stands in a single pool of light on wet asphalt; everything else is obsidian. The page is a campaign one-sheet, not a storefront: a huge, tight condensed headline on the left, the motorcycle on the right, and an instrument-panel gear indicator that racks focus from machine to equipment. Density is low and deliberate; the dark does most of the work.\n\nThe material vocabulary is motorsport hardware: hairline silver rules at low alpha, square-cornered plates, a faint carbon weave behind the copy, one red rim light. Red is a signal, never a fill colour for the world. Motion is exponential ease-out throughout, so everything arrives fast and settles slowly, like a throttle blip.",
+    "keyCharacteristics": [
+      "Obsidian ground with a single red rim light and a deep vignette toward the copy column.",
+      "Barlow Condensed set huge and tight for display; Manrope for running text.",
+      "Square corners everywhere; structure drawn with 1px hairlines, not boxes or shadows.",
+      "Red reserved for a short, enumerated list of signals.",
+      "A gear-indicator selector (N/1/2/3) as the signature interaction, with a focus-pull between bike and equipment.",
+      "Expo-out motion and a staggered CSS entrance choreography."
+    ],
+    "rules": [
+      {
+        "name": "The Redline Rule",
+        "body": "Red appears only in the enumerated signal roles above. If a new element wants red, it must replace one of those signals, not join them.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Light Rule",
+        "body": "The scene has one red light source (the glow behind the bike and its floor rim). Do not add second coloured light sources or gradients in other hues.",
+        "section": "colors"
+      },
+      {
+        "name": "The Display Does the Talking Rule",
+        "body": "Every non-sentence string (buttons, nav, numerals, labels) is Barlow Condensed in capitals with positive tracking; every sentence is Manrope in sentence case. Never mix within a role.",
+        "section": "typography"
+      },
+      {
+        "name": "The Scale With H1 Rule",
+        "body": "Headline-adjacent display text derives from `--h1` rather than its own fixed size, so the headline group keeps its proportions at every breakpoint.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lit Scene Rule",
+        "body": "Controls and plates never cast shadows; only physical objects in the scene (bike, equipment) and the overlay sheet carry depth.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep red in its enumerated signal roles (active gear, primary CTA, one headline line, strip micro-accent, KATALOG hover, intro line, selection).",
+      "**Do** draw structure with 1px Hairline rules and keep every corner square.",
+      "**Do** set every non-sentence string in Barlow Condensed capitals and every sentence in Manrope.",
+      "**Do** derive headline-group sizes from `--h1` and re-clamp `--h1` per breakpoint.",
+      "**Do** use expo-out easing for movement and let focus (blur, dim, scale) express state changes in the scene.",
+      "**Do** keep text layouts stable during state changes (stacked captions in one cell, fixed numeral window)."
+    ],
+    "donts": [
+      "**Don't** add rounded corners, pill buttons or soft cards; the world is square-cut hardware.",
+      "**Don't** put shadows on controls or plates; depth belongs to the scene's objects.",
+      "**Don't** introduce a second accent hue or a second coloured light source.",
+      "**Don't** treat the italic typographic wordmark as the logo or derive an emblem from it; it is a placeholder until the official logo arrives.",
+      "**Don't** add small tracked labels above headings; the lead-in is part of the headline at 0.36×H1, and the \"UZATMA\" label belongs only to the gear instrument."
+    ]
+  }
+}
